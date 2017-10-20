@@ -1,9 +1,8 @@
 # Spring Cloud入门教程
 ![](https://i.imgur.com/wTqZcJC.png)
-### by Gary
 
 ---
-<img src="/Spring_Cloud.png"  alt="无法显示该图片" />
+<img src="Spring_Cloud.png"  alt="无法显示该图片" />
 
 ---
 # Index：
