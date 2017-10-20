@@ -3,6 +3,9 @@
 ### by Gary
 
 ---
+<img src="/Spring_Cloud.png"  alt="无法显示该图片" />
+
+---
 # Index：
 ### 1.MicroService
 ### 2.Spring Cloud & Spring Boot
@@ -14,7 +17,8 @@
 ### 8.Spring Cloud Config
 ### 9.Spring Cloud Bus & RabbitMQ
 ### 10.SideCar
-### 11.引用说明
+### 11.总结
+### 12.引用说明
 
 ---
 # 1.MicroService
@@ -42,6 +46,22 @@
 
 ## 2.2 Spring Boot
 ### 2.2.1 Spring Boot介绍：
+### 针对基于spring 框架的web项目而言，基本需要如下几步：
+- 创建一个java web项目
+- 下载第三方相关库(手动或maven下载jar)
+- 配置web.xml（dispatcherSevlet、log、编码、session、mapping等等）
+- 配置spring及MVC九大组件中需要的部分
+- 开发业务
+- 开发非业务功能（如：安全、健康检查）
+- 下载安装并配置tomcat
+- 构建war
+- 部署项目到tomcat
+### spring boot是一个用来简化搭建Spring应用以及简化其开发过程的框架，简化的内容整体大概为如下几块：
+- 简化依赖：通过maven中一个spring-boot-starter-xxx就可以把需要的功能模块所有指定版本的依赖包全部引入
+- 简化容器：通过maven中一个spring-boot-starter-web配置就可以引入一个内置的tomcat
+- 简化配置：通过@EnableAutoConfiguration就可以让spring boot智能化自动配置相应模块（需要classPath引入对应模块的jar来配合）；通过@Configuration来减少甚至完全消除对xml的依赖
+- 提供通用组件：提供常用的监控功能
+
 ![](https://i.imgur.com/RkLhd13.png)
 
 ---
@@ -142,12 +162,17 @@
 ![](https://i.imgur.com/aNQ07wN.png)
 
 ### 7.2 Zuul原理：
-### Zuul将自己作为一个微服务注册到Eureka上，就获取了所有微服务的实例信息
+### Zuul通过大量的filter对请求进行安全、认证、路由进行控制
+![](https://i.imgur.com/tn7Thhn.png)
 
-### 7.3 Zuul使用：
-- 1.添加依赖
-- 2.配置文件
-- 3.启动类
+- PRE Filters：是在把请求路由到目标节点前执行。如：认证、加载目标服务节点、打印日志
+- ROUTING Filters：是把请求路由到目标服务的节点。到目标的请求就在这些filter中被创建，并通过Apache HttpClient或 Netflix Ribbon转发到目标节点
+- POST Filters：是目标节点请求结束并返回到zuul后执行。可以把HTTP headers添加到返回给客户端的response中，并可以收集统计信息和健康信息，以及把目标节点的业务数据返回给客户
+- ERROR Filters：任何一个步骤出错都会调用当前类型的filter
+### 7.3 Zuul简单使用：
+### 7.3.1 添加依赖
+### 7.3.2 配置文件
+### 7.3.3 添加注解
 
 ---
 # 8.Spring Cloud Config集中配置管理
@@ -163,13 +188,30 @@
 ### 9.1 Spring Cloud Bus介绍：
 ![](https://i.imgur.com/SqKCK6s.png)
 
+### 9.3 简单使用：
+### 切换到RabbitMQ安装目录的sbin目录下D:\RabbitMQ Server\rabbitmq_server-3.6.12\sbin，执行rabbitmq-plugins enable rabbitmq_management命令启动
 ---
 # 10.SideCar异构服务
 
 ---
-# 11.引用说明
+# 11.总结
+### 在网上看到一个例子非常贴切[11]：
+### Spring Cloud架构的项目就像一栋写字楼，写字楼里各种各样的公司为用户提供了各种各样的服务。
+### 每间办公室对应着一个docker容器，容器内跑了程序就叫一个微服务节点。每间办公室的房间号就是每一个容器的ip和port，公司名称就是微服务的服务名，如果一家公司规模较大有好几间办公室，那么就是多个容器组成一个高可用的微服务集群
+### 写字楼楼底都有一个索引牌，哪家公司提供哪些服务房间号是多少，这个索引牌就是Spring Cloud Eureka
+### 写字楼的大门和门卫是所有公司对外的gateway，用户只能通过大门进去进行安检后保安会帮你指路，这个大门和保安就是Spring Cloud Zuul
+### 如果保安告诉你这家公司今天没上班你不用再浪费时间上去了，下次再来吧，这就是Spring Cloud Hystrix
+### 如果一个公司有好几间办公室，用户自己选择进哪一间获取相关服务，这个就是Spring Cloud Ribbon
+### 如果你是有头有脸的人物，以上访问一家公司的流程不够上档次，公司会安排专门的礼仪小姐在电梯口迎接，提高用户的满意度，这就是Spring Cloud Feign
+### 写字楼里都有摄像头，你什么时间进入哪个房间，什么时间出来哪个房间都会记录下来，这就是Spring Cloud Sleuth
+### 这栋写字楼的物业公司会派不同的保洁阿姨每天给不同的公司换不同的地毯，卫生程度也不一样，这就是Spring Cloud Config
+### 如果这栋写字楼的物业公司福利够好，保洁阿姨每天上下班都有巴士接送，这就是Spring Cloud Bus
+
+---
+# 12.引用说明
 ### 此文档主要用于个人学习总结，所以大部分引用或参考于一些大神们的博客，再加上自己的补充和理解，如果有漏掉的您可以给我发邮件加上或者删除出自您的部分，以下给出引用链接：
 - <a href="http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">翟永超老师的《Spring Cloud基础教程》</a>
+- [11] <a href="http://blog.csdn.net/yejingtao703/article/details/77688711">Spring实现微服务—进阶篇</a>
 
 ## 未完待续。。。
 
