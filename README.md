@@ -1,5 +1,5 @@
 # Spring Cloud入门教程
-<img src="/Spring_Cloud.png"  alt="无法显示该图片" />
+<img src="/SpringCloud.png"  alt="无法显示该图片" />
 
 ### by Gary
 
@@ -222,7 +222,9 @@
 # 9.Spring Cloud Bus & RabbitMq消息总线
 ### 9.1 Spring Cloud Bus介绍：
 ### Spring Cloud Bus配合Spring Cloud Config来实现动态的配置更新
-![](https://i.imgur.com/SqKCK6s.png)
+![](https://i.imgur.com/lv1oHGp.jpg)
+![](https://i.imgur.com/aYM7FHw.png)
+![](https://i.imgur.com/3c2TLet.png)
 
 ### 9.3 简单使用：
 ### 9.3.1 启动RabbitMQ：
