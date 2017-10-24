@@ -289,9 +289,9 @@
 
 ---
 # 12.引用说明
-### 此文档主要用于个人学习总结，所以大部分引用或参考于一些大神们的博客，再加上自己的补充和理解，如果有漏掉的您可以给我发邮件加上或者删除出自您的部分，以下给出引用链接：
-- <a href="http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">翟永超老师的《Spring Cloud基础教程》</a>
-- [11]<a href="http://blog.csdn.net/yejingtao703/article/details/77688711">Spring实现微服务—进阶篇</a>
+### 此文档用于个人学习总结，有少部分文字跟图片引用于一些大神们的博客，如果有漏掉的您可以给我发邮件说明，以下给出引用链接：
+- 每章节文字介绍来自<a href="http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">翟永超老师的《Spring Cloud基础教程》</a>
+- [11]总结的例子来自<a href="http://blog.csdn.net/yejingtao703/article/details/77688711">Spring实现微服务—进阶篇</a>
 
 ## （未完待续）
 
