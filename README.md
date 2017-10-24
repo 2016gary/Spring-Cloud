@@ -60,13 +60,19 @@
 - **简化配置**：通过@EnableAutoConfiguration就可以让spring boot智能化自动配置相应模块（需要classPath引入对应模块的jar来配合）；通过@Configuration来减少甚至完全消除对xml的依赖
 - **提供通用组件**：提供常用的监控功能
 
+### 2.2.2 Spring Boot简单使用：
+### 2.2.2.1 修改pom文件：
+![](https://i.imgur.com/SUIiPjX.png)
+![](https://i.imgur.com/D2V1sql.png)
+### 2.2.2.2 添加注解：
+![](https://i.imgur.com/DQlnNDI.png)
 ### 简化容器：
 ![](https://i.imgur.com/RkLhd13.png)
 
 ### 独立进程：
 ![](https://i.imgur.com/dlmMOn9.png)
 
-### Spring Boot Admin介绍：
+### 2.2.3 Spring Boot Admin介绍：
 ### 是在Spring Boot Actuator的基础上提供简洁的可视化WEB UI用来管理Spring Boot应用程序，提供如下功能：
 - 显示name/id和版本号
 - 显示在线状态
@@ -83,6 +89,15 @@
 	
 	> Spring 环境属性
 
+### 2.2.4 Spring Boot Admin简单使用：
+### 2.2.4.1 添加依赖：
+![](https://i.imgur.com/7ukchBt.png)
+### 2.2.4.2 配置文件：
+![](https://i.imgur.com/7eDbFIP.png)
+### 2.2.4.3 添加注解：
+![](https://i.imgur.com/MbmQwAU.png)
+
+### 2.2.5 Spring Boot Admin WebUI：
 ![](https://i.imgur.com/m0xPmeA.png)
 
 ### 消息通知：
@@ -173,20 +188,24 @@
 ### Spring Cloud Hystrix中实现了线程隔离、断路器等一系列的服务保护功能。它也是基于Netflix的开源框架 Hystrix实现的，该框架目标在于通过控制那些访问远程系统、服务和第三方库的节点，从而对延迟和故障提供更强大的容错能力。Hystrix具备了服务降级、服务熔断、线程隔离、请求缓存、请求合并以及服务监控等强大功能
 ### 5.1.2 Hystrix原理：
 ![](https://i.imgur.com/G5l5Sp5.png)
-### 5.1.3 Hystrix简单使用：
-### 5.1.3.1 添加依赖：
-### 5.1.3.2 配置文件：
-### 5.1.3.3 添加注解：
 
 ## 5.2 Hystrix Dashboard
 ### 5.2.1 Hystrix Dashboard介绍：
 ### Hystrix Dashboard是Hystrix的仪表盘组件，主要用来实时监控Hystrix的各项指标信息，通过界面反馈的信息可以快速发现系统中存在的问题
 ![](https://i.imgur.com/23HaBAn.png)
 
-### Web UI：
+### 5.2.2 Hystrix Dashboard简单使用：
+### 5.2.2.1 添加依赖
+![](https://i.imgur.com/LCvLe3L.png)
+### 5.2.2.2 配置文件
+![](https://i.imgur.com/ofoPGpm.png)
+### 5.2.2.3 添加注解
+![](https://i.imgur.com/ECmkP4G.png)
+
+### 5.2.3 Hystrix Dashboard Web UI：
 ![](https://i.imgur.com/YsGWo75.png)
 
-### 监控单个服务实例：
+### Hystrix Dashboard监控单个服务实例：
 ![](https://i.imgur.com/0sBEXD6.png)
 ![](https://i.imgur.com/W6EDa3s.png)
 
@@ -216,6 +235,13 @@
 ### 以上是对单个服务的监控，如果我们要监控多个服务，则在Dashboard之前需要一个收集器Turbine
 ![](https://i.imgur.com/Coa74VO.png)
 
+### 5.3.2 Turbine简单使用：
+### 5.3.2.1 添加依赖
+![](https://i.imgur.com/TMWDcvl.png)
+### 5.3.2.2 配置文件
+![](https://i.imgur.com/wchI0Ap.png)
+### 5.3.2.3 添加注解
+![](https://i.imgur.com/1ToRseo.png)
 ### 监控整个集群所有服务实例：
 ![](https://i.imgur.com/9OJd9yS.png)
 
@@ -233,7 +259,15 @@
 
 ![](https://i.imgur.com/bulM0h4.png)
 
-## 6.3 Web UI介绍：
+## 6.2 Sleuth简单使用：
+## 6.2.1 添加依赖
+![](https://i.imgur.com/wzItGms.png)
+## 6.2.2 配置文件
+![](https://i.imgur.com/i1jlgIP.png)
+## 6.2.3 添加注解
+![](https://i.imgur.com/hPQmqn5.png)
+
+## 6.3 Sleuth Web UI介绍：
 ![](https://i.imgur.com/piChthW.png)
 ![](https://i.imgur.com/sJzD7Ho.png)
 
@@ -258,17 +292,20 @@
 - **POST Filters**：是目标节点请求结束并返回到zuul后执行。可以把HTTP headers添加到返回给客户端的response中，并可以收集统计信息和健康信息，以及把目标节点的业务数据返回给客户
 - **ERROR Filters**：任何一个步骤出错都会调用当前类型的filter
 
-### 源码：
+### 7.3 Zuul简单使用：
+### 7.3.1 添加依赖
+![](https://i.imgur.com/m16aqGM.png)
+### 7.3.2 配置文件
+![](https://i.imgur.com/HpKPiu4.png)
+### 7.3.3 添加注解
+![](https://i.imgur.com/4RU0uyX.png)
+
+### Zuul源码：
 ![](https://i.imgur.com/gSiwCLE.png)
 ![](https://i.imgur.com/OOQLp2I.png)
 
 ### 自定义filter：
 ### 继承ZuulFilter
-
-### 7.3 Zuul简单使用：
-### 7.3.1 添加依赖
-### 7.3.2 配置文件
-### 7.3.3 添加注解
 
 ---
 # 8.Spring Cloud Config集中配置管理
@@ -278,20 +315,42 @@
 - **config-client**：客户端，客户端调用server端暴露接口获取配置信息
 ![](https://i.imgur.com/G2yPv8P.png)
 
+### 8.2 Spring Cloud Config简单使用：
+### 8.2.1 Spring Cloud Config Client添加依赖
+![](https://i.imgur.com/qiocF3q.png)
+### 8.2.2 Spring Cloud Config Client配置文件
+![](https://i.imgur.com/ovGZNpA.png)
+### 8.2.3 Spring Cloud Config Client添加注解
+![](https://i.imgur.com/3PJIQKE.png)
+### 8.2.4 Spring Cloud Config Server添加依赖
+![](https://i.imgur.com/MfCC9l4.png)
+### 8.2.5 Spring Cloud Config Server配置文件
+![](https://i.imgur.com/cKk43O7.png)
+### 8.2.6 Spring Cloud Config Server添加注解
+![](https://i.imgur.com/zcRVHC3.png)
+### 8.2.7 修改配置文件后调用对应实例的refresh接口进行刷新
+![](https://i.imgur.com/GajTZUS.png)
+
 ---
 # 9.Spring Cloud Bus & RabbitMq消息总线
 ### 9.1 Spring Cloud Bus介绍：
 ### Spring Cloud Bus配合Spring Cloud Config来实现动态的配置更新
 ![](https://i.imgur.com/lv1oHGp.jpg)
 
-### RabbitMQ Web UI：
+### 9.2 Spring Cloud Bus简单使用：
+### 9.2.1 添加依赖
+![](https://i.imgur.com/z1oJGcK.png)
+### 9.2.2 配置文件
+![](https://i.imgur.com/0bGsdqR.png)
+### 9.2.3 启动RabbitMQ：
+### 切换到RabbitMQ安装目录的sbin目录下D:\RabbitMQ Server\rabbitmq_server-3.6.12\sbin，执行rabbitmq-plugins enable rabbitmq_management命令启动
+### 9.2.4 Git PUSH修改配置文件
+### 9.2.5 调用Spring Cloud Config Server的/bus/refresh接口刷新所有实例
+![](https://i.imgur.com/JUomj9k.png)
+
+### 9.3 RabbitMQ Web UI：
 ![](https://i.imgur.com/aYM7FHw.png)
 ![](https://i.imgur.com/3c2TLet.png)
-
-### 9.3 简单使用：
-### 9.3.1 启动RabbitMQ：
-### 切换到RabbitMQ安装目录的sbin目录下D:\RabbitMQ Server\rabbitmq_server-3.6.12\sbin，执行rabbitmq-plugins enable rabbitmq_management命令启动
-### 9.3.2 /bus/refresh
 
 ---
 # 10.SideCar异构服务
@@ -321,8 +380,6 @@
 ### 此文档用于个人学习总结，有少部分文字跟图片引用于一些大神们的博客，如果有漏掉的您可以给我发邮件说明，以下给出引用链接：
 - 每章节文字介绍来自<a href="http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">翟永超老师的《Spring Cloud基础教程》</a>
 - [11]总结的例子来自<a href="http://blog.csdn.net/yejingtao703/article/details/77688711">Spring实现微服务—进阶篇</a>
-
-## （未完待续）
 
 
 
