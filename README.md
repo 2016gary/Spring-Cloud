@@ -139,11 +139,18 @@
 ### 当Ribbon与Eureka联合使用时，ribbonServerList会被DiscoveryEnabledNIWSServerList重写，扩展成从Eureka注册中心中获取服务实例列表。同时它也会用NIWSDiscoveryPing来取代IPing，它将职责委托给Eureka来确定服务端是否已经启动
 ![](https://i.imgur.com/HXACZzz.png)
 ### 4.1.2 Ribbon原理：
-### 负载均衡策略的抽象类-AbstractLoadBanlancerRule：
+### 继承负载均衡策略的抽象类-AbstractLoadBanlancerRule：
 - RandomRule - 随机策略
+![](https://i.imgur.com/PoNT2SM.png)
+
 - RoundRobinRule - 线性轮循策略
 - WeightedResponseTimeRule - 加权响应时间策略
+![](https://i.imgur.com/rTG6Pj2.png)
+![](https://i.imgur.com/Ov5PD2k.png)
+
 - BestAvailableRule - 选最空闲实例策略
+![](https://i.imgur.com/NP42doF.png)
+
 - ZoneAwareLoadBalancer - 区域感知策略
 
 ## 4.2 Feign
