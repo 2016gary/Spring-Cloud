@@ -235,7 +235,7 @@
 
 ## 6.3 Web UI介绍：
 ![](https://i.imgur.com/piChthW.png)
-![](https://i.imgur.com/QeRPkcz.png)
+![](https://i.imgur.com/sJzD7Ho.png)
 
 ## 6.4 Span的存储方式
 ### 在Zipkin Server里面有很多种存储方式，但是比较主流的有这两种：
