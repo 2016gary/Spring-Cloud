@@ -113,7 +113,7 @@
 
 ![](https://i.imgur.com/0MOUcf2.png)
 
-### 3.1.1 Eureka Server WebUI介绍：
+### 3.1.1 Eureka Server Web UI介绍：
 ![](https://i.imgur.com/kQnbw8r.png)
 ![](https://i.imgur.com/5ZQinxv.png)
 
@@ -182,7 +182,11 @@
 ### 5.2.1 Hystrix Dashboard介绍：
 ### Hystrix Dashboard是Hystrix的仪表盘组件，主要用来实时监控Hystrix的各项指标信息，通过界面反馈的信息可以快速发现系统中存在的问题
 ![](https://i.imgur.com/23HaBAn.png)
+
+### Web UI：
 ![](https://i.imgur.com/YsGWo75.png)
+
+### 监控单个服务实例：
 ![](https://i.imgur.com/0sBEXD6.png)
 ![](https://i.imgur.com/W6EDa3s.png)
 
@@ -212,6 +216,11 @@
 ### 以上是对单个服务的监控，如果我们要监控多个服务，则在Dashboard之前需要一个收集器Turbine
 ![](https://i.imgur.com/Coa74VO.png)
 
+### Web UI：
+
+### 监控整个集群所有服务实例：
+
+
 ---
 # 6.Sleuth & Zipin服务链式追踪
 ## 6.1 Sleuth
@@ -226,7 +235,7 @@
 
 ![](https://i.imgur.com/bulM0h4.png)
 
-## 6.3 WebUI介绍：
+## 6.3 Web UI介绍：
 ![](https://i.imgur.com/piChthW.png)
 ![](https://i.imgur.com/QeRPkcz.png)
 
@@ -244,6 +253,11 @@
 - **ROUTING Filters**：是把请求路由到目标服务的节点。到目标的请求就在这些filter中被创建，并通过Apache HttpClient或 Netflix Ribbon转发到目标节点
 - **POST Filters**：是目标节点请求结束并返回到zuul后执行。可以把HTTP headers添加到返回给客户端的response中，并可以收集统计信息和健康信息，以及把目标节点的业务数据返回给客户
 - **ERROR Filters**：任何一个步骤出错都会调用当前类型的filter
+
+### 源码：
+![](https://i.imgur.com/gSiwCLE.png)
+![](https://i.imgur.com/OOQLp2I.png)
+
 ### 7.3 Zuul简单使用：
 ### 7.3.1 添加依赖
 ### 7.3.2 配置文件
@@ -262,6 +276,8 @@
 ### 9.1 Spring Cloud Bus介绍：
 ### Spring Cloud Bus配合Spring Cloud Config来实现动态的配置更新
 ![](https://i.imgur.com/lv1oHGp.jpg)
+
+### RabbitMQ Web UI：
 ![](https://i.imgur.com/aYM7FHw.png)
 ![](https://i.imgur.com/3c2TLet.png)
 
