@@ -239,6 +239,12 @@
 ![](https://i.imgur.com/piChthW.png)
 ![](https://i.imgur.com/QeRPkcz.png)
 
+## 6.4 Span的存储方式
+### 在Zipkin Server里面有很多种存储方式，但是比较主流的有这两种：
+- 放在内存中存储
+- 放在mysql中存储：
+	>放在内存中的随着服务端的启动会出清空历史数据，如果想持久化保留这些数据，可以选择mysql的方式存储 
+
 ---
 # 7.Zuul服务网关
 ### 7.1 Zuul介绍：
@@ -257,6 +263,9 @@
 ### 源码：
 ![](https://i.imgur.com/gSiwCLE.png)
 ![](https://i.imgur.com/OOQLp2I.png)
+
+### 自定义filter：
+### 继承ZuulFilter
 
 ### 7.3 Zuul简单使用：
 ### 7.3.1 添加依赖
