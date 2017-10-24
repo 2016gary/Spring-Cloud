@@ -60,16 +60,47 @@
 - **简化配置**：通过@EnableAutoConfiguration就可以让spring boot智能化自动配置相应模块（需要classPath引入对应模块的jar来配合）；通过@Configuration来减少甚至完全消除对xml的依赖
 - **提供通用组件**：提供常用的监控功能
 
+### 简化容器：
 ![](https://i.imgur.com/RkLhd13.png)
+
+### 独立进程：
 ![](https://i.imgur.com/dlmMOn9.png)
+
+### Spring Boot Admin介绍：
+### 是在Spring Boot Actuator的基础上提供简洁的可视化WEB UI用来管理Spring Boot应用程序，提供如下功能：
+- 显示name/id和版本号
+- 显示在线状态
+- Logging日志级别管理
+- JMX beans管理
+- Threads会话和线程管理
+- Trace应用请求跟踪
+- 应用运行参数信息，如：
+	> Java系统属性
+	
+	> Java环境变量属性
+	
+	> 内存信息
+	
+	> Spring 环境属性
+
 ![](https://i.imgur.com/m0xPmeA.png)
+
+### 消息通知：
 ![](https://i.imgur.com/RyGfytC.png)
+
+### 应用运行详细参数信息：
 ![](https://i.imgur.com/2Ob8MJE.png)
 ![](https://i.imgur.com/3BPbYQZ.png)
 ![](https://i.imgur.com/m2u2PkM.png)
 ![](https://i.imgur.com/ZhsHCcK.png)
+
+### Logging日志级别管理：
 ![](https://i.imgur.com/wCMuovB.png)
+
+### Threads会话和线程管理：
 ![](https://i.imgur.com/qpikatj.png)
+
+### Trace应用请求跟踪：
 ![](https://i.imgur.com/jcfJM7S.png)
 
 ---
@@ -99,6 +130,7 @@
 ![](https://i.imgur.com/ArpLdDp.png)
 ### 3.2.3 添加注解：
 ![](https://i.imgur.com/7ITZCpV.png)
+
 ---
 # 4.Ribbon & Feign服务调用和客户端负载均衡
 ## 4.1 Ribbon
