@@ -216,10 +216,8 @@
 ### 以上是对单个服务的监控，如果我们要监控多个服务，则在Dashboard之前需要一个收集器Turbine
 ![](https://i.imgur.com/Coa74VO.png)
 
-### Web UI：
-
 ### 监控整个集群所有服务实例：
-
+![](https://i.imgur.com/9OJd9yS.png)
 
 ---
 # 6.Sleuth & Zipin服务链式追踪
