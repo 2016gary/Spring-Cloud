@@ -128,16 +128,6 @@
 
 ![](https://i.imgur.com/0MOUcf2.png)
 
-### 3.1.1 Eureka Server Web UI介绍：
-![](https://i.imgur.com/kQnbw8r.png)
-![](https://i.imgur.com/5ZQinxv.png)
-
-### 3.2 Eureka原理：
-### Eureka包括Eureka Server和Eureka Client，Eureka client再分为Service Provider和Service Consumer：
-- **Eureka Server**：服务的注册中心，负责维护注册的服务列表
-- **Service Provider**：服务提供方，作为一个Eureka Client，向Eureka Server做服务注册、续约和下线等操作，注册的主要数据包括服务名、机器ip、端口号、域名等
-- **Service Consumer**：服务消费方，作为一个Eureka Client，向Eureka Server获取Service Provider的注册信息，并通过远程调用与Service Provider进行通信
-
 ### 3.2 Eureka简单使用：
 ### 3.2.1 添加依赖：
 ![](https://i.imgur.com/5ImANns.png)
@@ -145,6 +135,16 @@
 ![](https://i.imgur.com/ArpLdDp.png)
 ### 3.2.3 添加注解：
 ![](https://i.imgur.com/7ITZCpV.png)
+
+### 3.3 Eureka Server Web UI介绍：
+![](https://i.imgur.com/kQnbw8r.png)
+![](https://i.imgur.com/5ZQinxv.png)
+
+### 3.4 Eureka原理：
+### Eureka包括Eureka Server和Eureka Client，Eureka client再分为Service Provider和Service Consumer：
+- **Eureka Server**：服务的注册中心，负责维护注册的服务列表
+- **Service Provider**：服务提供方，作为一个Eureka Client，向Eureka Server做服务注册、续约和下线等操作，注册的主要数据包括服务名、机器ip、端口号、域名等
+- **Service Consumer**：服务消费方，作为一个Eureka Client，向Eureka Server获取Service Provider的注册信息，并通过远程调用与Service Provider进行通信
 
 ---
 # 4.Ribbon & Feign服务调用和客户端负载均衡
@@ -259,19 +259,19 @@
 
 ![](https://i.imgur.com/bulM0h4.png)
 
-## 6.2 Sleuth简单使用：
-## 6.2.1 添加依赖
+## 6.3 Sleuth简单使用：
+## 6.3.1 添加依赖
 ![](https://i.imgur.com/wzItGms.png)
-## 6.2.2 配置文件
+## 6.3.2 配置文件
 ![](https://i.imgur.com/i1jlgIP.png)
-## 6.2.3 添加注解
+## 6.3.3 添加注解
 ![](https://i.imgur.com/hPQmqn5.png)
 
-## 6.3 Sleuth Web UI介绍：
+## 6.4 Sleuth Web UI介绍：
 ![](https://i.imgur.com/piChthW.png)
 ![](https://i.imgur.com/sJzD7Ho.png)
 
-## 6.4 Span的存储方式
+## 6.5 Span的存储方式
 ### 在Zipkin Server里面有很多种存储方式，但是比较主流的有这两种：
 - 放在内存中存储
 - 放在mysql中存储：
