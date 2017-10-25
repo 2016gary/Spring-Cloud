@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: SideCar
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: guo.r
+Implementation-Vendor-Id: com.gary
+Build-Jdk: 1.8.0_40-ea
+Implementation-URL: http://projects.spring.io/spring-boot/SideCar/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
