@@ -348,7 +348,82 @@
 ### 9.2.5 调用Spring Cloud Config Server的/bus/refresh接口刷新所有实例
 ![](https://i.imgur.com/JUomj9k.png)
 
-### 9.3 RabbitMQ Web UI：
+### 9.3 RabbitMQ介绍[1]：
+### RabbitMQ是一个开源的AMQP实现，AMQP即Advanced Message Queuing Protocol，高级消息队列协议，是应用层协议的一个开放标准，为面向消息的中间件设计。RabbitMQ服务器端用Erlang语言编写，支持多种客户端。
+![](https://i.imgur.com/nncUGLs.png)
+
+### 9.3.1 ConnectionFactory：
+### ConnectionFactory为Connection的制造工厂。
+
+### 9.3.2 Connection：
+### Connection是RabbitMQ的socket链接，它封装了socket协议相关部分逻辑。
+
+### 9.3.3 Channel：
+### Channel是我们与RabbitMQ打交道的最重要的一个接口，我们大部分的业务操作是在Channel这个接口中完成的，包括定义Queue、定义Exchange、绑定Queue与Exchange、发布消息等。
+
+### 9.3.4 Queue：
+### Queue（队列）是RabbitMQ的内部对象，用于存储消息。
+![](https://i.imgur.com/Sy9fnC7.png)
+### 多个消费者可以订阅同一个Queue，这时Queue中的消息会被平均分摊给多个消费者进行处理，而不是每个消费者都收到所有的消息并处理。
+![](https://i.imgur.com/qIbFZJA.png)
+
+### 9.3.5 Message acknowledgment：
+### 在实际应用中，可能会发生消费者收到Queue中的消息，但没有处理完成就宕机（或出现其他意外）的情况，这种情况下就可能会导致消息丢失。为了避免这种情况发生，我们可以要求消费者在消费完消息后发送一个回执给RabbitMQ，RabbitMQ收到消息回执（Message acknowledgment）后才将该消息从Queue中移除；如果RabbitMQ没有收到回执并检测到消费者的RabbitMQ连接断开，则RabbitMQ会将该消息发送给其他消费者（如果存在多个消费者）进行处理。
+
+### 9.3.6 Message durability：
+### 如果我们希望即使在RabbitMQ服务重启的情况下，也不会丢失消息，我们可以将Queue与Message都设置为可持久化的（durable），这样可以保证绝大部分情况下我们的RabbitMQ消息不会丢失。
+
+### 9.3.7 Prefetch count：
+### 前面我们讲到如果有多个消费者同时订阅同一个Queue中的消息，Queue中的消息会被平摊给多个消费者。这时如果每个消息的处理时间不同，就有可能会导致某些消费者一直在忙，而另外一些消费者很快就处理完手头工作并一直空闲的情况。我们可以通过设置prefetchCount来限制Queue每次发送给每个消费者的消息数，比如我们设置prefetchCount=1，则Queue每次给每个消费者发送一条消息；消费者处理完这条消息后Queue会再给该消费者发送一条消息。
+![](https://i.imgur.com/sp1FNHf.png)
+
+### 9.3.8 Exchange：
+### 在上一节我们看到生产者将消息投递到Queue中，实际上这在RabbitMQ中这种事情永远都不会发生。实际的情况是，生产者将消息发送到Exchange（交换器，下图中的X），由Exchange将消息路由到一个或多个Queue中（或者丢弃）。 
+![](https://i.imgur.com/6Ay1k1a.png)
+
+### 9.3.9 routing key：
+###	生产者在将消息发送给Exchange的时候，一般会指定一个routing key，来指定这个消息的路由规则，而这个routing key需要与Exchange Type及binding key联合使用才能最终生效。在Exchange Type与binding key固定的情况下（在正常使用时一般这些内容都是固定配置好的），我们的生产者就可以在发送消息给Exchange时，通过指定routing key来决定消息流向哪里。RabbitMQ为routing key设定的长度限制为255 bytes。
+
+### 9.3.10 Binding：
+### RabbitMQ中通过Binding将Exchange与Queue关联起来，这样RabbitMQ就知道如何正确地将消息路由到指定的Queue了。
+![](https://i.imgur.com/R3wiLy6.png)
+
+### 9.3.11 Binding key：
+### 在绑定（Binding）Exchange与Queue的同时，一般会指定一个binding key；消费者将消息发送给Exchange时，一般会指定一个routing key；当binding key与routing key相匹配时，消息将会被路由到对应的Queue中。
+
+### 9.3.12 Exchange Types：
+### RabbitMQ常用的Exchange Type有fanout、direct、topic、headers这四种。
+
+### 9.3.13 fanout：
+### fanout类型的Exchange路由规则非常简单，它会把所有发送到该Exchange的消息路由到所有与它绑定的Queue中。下图中，生产者（P）发送到Exchange（X）的所有消息都会路由到图中的两个Queue，并最终被两个消费者（C1与C2）消费。
+![](https://i.imgur.com/QHTAcWg.png)
+
+### 9.3.14 direct：
+### direct类型的Exchange路由规则也很简单，它会把消息路由到那些binding key与routing key完全匹配的Queue中。以下图的配置为例，我们以routingKey=”error”发送消息到Exchange，则消息会路由到Queue1（amqp.gen-S9b…，这是由RabbitMQ自动生成的Queue名称）和Queue2（amqp.gen-Agl…）；如果我们以routingKey=”info”或routingKey=”warning”来发送消息，则消息只会路由到Queue2。如果我们以其他routingKey发送消息，则消息不会路由到这两个Queue中。
+![](https://i.imgur.com/jI8EUYE.png)
+
+### 9.3.15 topic：
+### topic类型的Exchange在匹配规则上进行了扩展，它与direct类型的Exchage相似，也是将消息路由到binding key与routing key相匹配的Queue中，但这里的匹配规则有些不同，它约定：
+- routing key为一个句点号“. ”分隔的字符串（我们将被句点号“. ”分隔开的每一段独立的字符串称为一个单词），如“stock.usd.nyse”、“nyse.vmw”、“quick.orange.rabbit”
+- binding key与routing key一样也是句点号“. ”分隔的字符串
+- binding key中可以存在两种特殊字符“*”与“#”，用于做模糊匹配，其中“*”用于匹配一个单词，“#”用于匹配多个单词（可以是零个）
+###以下图中的配置为例，routingKey=”quick.orange.rabbit”的消息会同时路由到Q1与Q2，routingKey=”lazy.orange.fox”的消息会路由到Q1与Q2，routingKey=”lazy.brown.fox”的消息会路由到Q2，routingKey=”lazy.pink.rabbit”的消息会路由到Q2（只会投递给Q2一次，虽然这个routingKey与Q2的两个bindingKey都匹配）；routingKey=”quick.brown.fox”、routingKey=”orange”、routingKey=”quick.orange.male.rabbit”的消息将会被丢弃，因为它们没有匹配任何bindingKey。
+![](https://i.imgur.com/F9OLmiO.png)
+
+### 9.3.16 headers：
+### headers类型的Exchange不依赖于routing key与binding key的匹配规则来路由消息，而是根据发送的消息内容中的headers属性进行匹配。 在绑定Queue与Exchange时指定一组键值对；当消息发送到Exchange时，RabbitMQ会取到该消息的headers（也是一个键值对的形式），对比其中的键值对是否完全匹配Queue与Exchange绑定时指定的键值对；如果完全匹配则消息会路由到该Queue，否则不会路由到该Queue。 
+
+### 9.3.17 RPC：
+### MQ本身是基于异步的消息处理，前面的示例中所有的生产者（P）将消息发送到RabbitMQ后不会知道消费者（C）处理成功或者失败（甚至连有没有消费者来处理这条消息都不知道）。 但实际的应用场景中，我们很可能需要一些同步处理，需要同步等待服务端将我的消息处理完成后再进行下一步处理。这相当于RPC（Remote Procedure Call，远程过程调用）。在RabbitMQ中也支持RPC。
+![](https://i.imgur.com/1MjaI4Q.png)
+
+### RabbitMQ  中实现RPC 的机制是：
+- 客户端发送请求（消息）时，在消息的属性（MessageProperties ，在AMQP 协议中定义了14中properties ，这些属性会随着消息一起发送）中设置两个值replyTo （一个Queue 名称，用于告诉服务器处理完成后将通知我的消息发送到这个Queue 中）和correlationId （此次请求的标识号，服务器处理完成后需要将此属性返还，客户端将根据这个id了解哪条请求被成功执行了或执行失败）
+- 服务器端收到消息并处理
+- 服务器端处理完消息后，将生成一条应答消息到replyTo 指定的Queue ，同时带上correlationId 属性
+- 客户端之前已订阅replyTo 指定的Queue ，从中收到服务器的应答消息后，根据其中的correlationId 属性分析哪条请求被执行了，根据执行结果进行后续业务处理
+
+### 9.4 RabbitMQ Web UI：
 ![](https://i.imgur.com/aYM7FHw.png)
 ![](https://i.imgur.com/3c2TLet.png)
 
@@ -363,7 +438,7 @@
 
 ---
 # 11.总结
-### 在网上看到一个例子非常贴切[11]：
+### 在网上看到一个例子非常贴切[2]：
 ### *Spring Cloud*就像一栋写字楼，写字楼里有各种各样的公司为用户提供了各种各样的服务。
 ### 每间办公室对应着一个*docker*容器，容器内跑了程序就叫一个微服务节点。每间办公室的房间号就是每一个容器的ip和port，公司名称就是微服务的服务名，如果一家公司规模较大有好几间办公室，那么就是多个容器组成一个高可用的微服务集群
 ### 写字楼楼底都有一个索引牌，哪家公司提供哪些服务房间号是多少，这个索引牌就是*Spring Cloud Eureka*
@@ -378,9 +453,10 @@
 ---
 # 12.引用说明
 ### 此文档用于个人学习总结，有少部分文字跟图片引用于一些大神们的博客，如果有漏掉的您可以给我发邮件说明，以下给出引用链接：
-- 每章节文字介绍来自<a href="http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">翟永超老师的《Spring Cloud基础教程》</a>
-- [11]总结的例子来自<a href="http://blog.csdn.net/yejingtao703/article/details/77688711">Spring实现微服务—进阶篇</a>
-- 有水印的图片来自原作者
+- 每章节文字介绍引用自<a href="http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">《Spring Cloud基础教程》</a>
+- [1]RabbitMQ介绍引用自<a href="http://blog.csdn.net/yejingtao703/article/details/77688711">我为什么要选择RabbitMQ，RabbitMQ简介，各种MQ选型对比</a>
+- [2]总结的例子引用自<a href="http://www.sojson.com/blog/48.html">Spring实现微服务—进阶篇</a>
+- 部分图片引用自其上水印链接
 
 
 
