@@ -458,6 +458,20 @@
   		"status":"UP"
 	}
 
+### 10.2 SideCar简单使用：
+### 10.2.1 添加依赖
+![](https://i.imgur.com/kh4IJlr.png)
+### 10.2.2 配置文件
+![](https://i.imgur.com/tojowtz.png)
+### 10.2.3 添加注解
+![](https://i.imgur.com/KeE91oJ.png)
+### Eureka Web UI：
+![](https://i.imgur.com/NX9yusl.png)
+### forSideCar.py：
+![](https://i.imgur.com/PIFyLXK.png)
+### 如果关掉python程序，Eureka Web UI：
+![](https://i.imgur.com/k9WOela.png)
+
 ---
 # 11.总结
 ### 在网上看到一个例子非常贴切[2]：
