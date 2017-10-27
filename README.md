@@ -1,4 +1,4 @@
-# <span id="top">Spring Cloud微服务架构入门教程</span>
+# <span name="top">Spring Cloud微服务架构入门教程</span>
 <img src="/SpringCloud.png"  alt="无法显示该图片" />
 
 ### by Gary
@@ -19,7 +19,7 @@
 ### <a href="#chapter12">12.引用说明</a>
 
 ---
-# <span id="chapter1">1.MicroService</span>
+# <span name="chapter1">1.MicroService</span>
 ## 微服务架构：
 ### 微服务架构是一种架构模式，它提倡将单一应用程序划分成一组小的服务，服务之间互相协调、互相配合，为用户提供最终价值。每个服务运行在其独立的进程中，服务与服务间采用轻量级的通信机制互相沟通（通常是基于HTTP协议的RESTful API）。每个服务都围绕着具体业务进行构建，并且能够被独立的部署到生产环境、类生产环境等。另外，应当尽量避免统一的、集中式的服务管理机制，对具体的一个服务而言，应根据业务上下文，选择合适的语言、工具对其进行构建。——Martin Fowler
 ### 总结：
@@ -29,7 +29,7 @@
 - 松耦合、独立部署
 
 ---
-# <span id="chapter2">2.Spring Cloud & Spring Boot</span>
+# <span name="chapter2">2.Spring Cloud & Spring Boot</span>
 ## 2.1 Spring Cloud
 ### 2.1.1 Spring Cloud介绍：
 ### Spring Cloud是一个基于Spring Boot实现的云应用开发工具，它为基于JVM的云应用开发中涉及的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的开发方式
@@ -119,7 +119,7 @@
 ![](https://i.imgur.com/jcfJM7S.png)
 
 ---
-# <span id="chapter3">3.Eureka服务注册与发现</span>
+# <span name="chapter3">3.Eureka服务注册与发现</span>
 ### 3.1 Eureka介绍：
 - Eureka以RESTful API的方式为服务实例提供了注册、管理和查询等操作
 - 可以运行多个Eureka实例构建集群达到高可用性
@@ -147,7 +147,7 @@
 - **Service Consumer**：服务消费方，作为一个Eureka Client，向Eureka Server获取Service Provider的注册信息，并通过远程调用与Service Provider进行通信
 
 ---
-# <span id="chapter4">4.Ribbon & Feign服务调用和客户端负载均衡</span>
+# <span name="chapter4">4.Ribbon & Feign服务调用和客户端负载均衡</span>
 ## 4.1 Ribbon
 ### 4.1.1 Ribbon介绍：
 ### Spring Cloud Ribbon是基于Netflix Ribbon实现的一套客户端负载均衡的工具。它是一个基于HTTP和TCP的客户端负载均衡器。它可以通过在客户端中配置ribbonServerList来设置服务端列表去轮询访问以达到均衡负载的作用
@@ -182,7 +182,7 @@
 ![](https://i.imgur.com/9ed4YDB.png)
 
 ---
-# <span id="chapter5">5.Hystrix & Hystrix Dashboard & Turbine</span>
+# <span name="chapter5">5.Hystrix & Hystrix Dashboard & Turbine</span>
 ## 5.1 Hystrix
 ### 5.1.1 Hystrix介绍：
 ### Spring Cloud Hystrix中实现了线程隔离、断路器等一系列的服务保护功能。它也是基于Netflix的开源框架 Hystrix实现的，该框架目标在于通过控制那些访问远程系统、服务和第三方库的节点，从而对延迟和故障提供更强大的容错能力。Hystrix具备了服务降级、服务熔断、线程隔离、请求缓存、请求合并以及服务监控等强大功能
@@ -246,7 +246,7 @@
 ![](https://i.imgur.com/9OJd9yS.png)
 
 ---
-# <span id="chapter6">6.Sleuth & Zipin服务链式追踪</span>
+# <span name="chapter6">6.Sleuth & Zipin服务链式追踪</span>
 ## 6.1 Sleuth
 ### 6.1.1 Sleuth介绍：
 ### 服务追踪分析：一个调用可能需要多个后台服务协同完成，随着服务的增多对调用链的分析也会越来越复杂。针对服务链路追踪的问题，Google发表了Dapper论文，介绍了他们如何进行服务追踪分析。其基本思路是在服务调用的请求和响应中加入ID，标明上下游请求的关系。利用这些信息，可以可视化地分析服务调用链路和服务间的依赖关系。
@@ -278,7 +278,7 @@
 	>放在内存中的随着服务端的启动会出清空历史数据，如果想持久化保留这些数据，可以选择mysql的方式存储 
 
 ---
-# <span id="chapter7">7.Zuul服务网关</span>
+# <span name="chapter7">7.Zuul服务网关</span>
 ### 7.1 Zuul介绍：
 ### Spring Cloud Zuul就是一个提供负载均衡、反向代理和权限认证的API Gateway
 ![](https://i.imgur.com/aNQ07wN.png)
@@ -308,7 +308,7 @@
 ### 继承ZuulFilter
 
 ---
-# <span id="chapter8">8.Spring Cloud Config集中配置管理</span>
+# <span name="chapter8">8.Spring Cloud Config集中配置管理</span>
 ### 8.1 Spring Cloud Config介绍：
 ### Spring Cloud Config分为两部分：
 - **config-server**：服务端，管理配置信息
@@ -332,7 +332,7 @@
 ![](https://i.imgur.com/GajTZUS.png)
 
 ---
-# <span id="chapter9">9.Spring Cloud Bus & RabbitMq消息总线</span>
+# <span name="chapter9">9.Spring Cloud Bus & RabbitMq消息总线</span>
 ### 9.1 Spring Cloud Bus介绍：
 ### Spring Cloud Bus配合Spring Cloud Config来实现动态的配置更新
 ![](https://i.imgur.com/lv1oHGp.jpg)
@@ -450,7 +450,7 @@
 ![](https://i.imgur.com/3c2TLet.png)
 
 ---
-# <span id="chapter10">10.SideCar异构服务</span>
+# <span name="chapter10">10.SideCar异构服务</span>
 ### 10.1 SideCar介绍： 
 ### Spring Cloud Netflix Sidecar的设计灵感来自Netflix Prana，简单的说，一个非jvm程序，如：c++、python等，想要注册到eureka，但是应用都是一堆别的语言写的，那应该如何实现呢？Sidecar的原理就是监听该应用所运行的端口，然后检测该程序的运行状态，非jvm应用需要应该实现一个健康检查，Sidecar能够以此来报告给Eureka注册中心该应用是up还是down状态。
 ### 报告信息：
@@ -473,7 +473,7 @@
 ![](https://i.imgur.com/k9WOela.png)
 
 ---
-# <span id="chapter11">11.总结</span>
+# <span name="chapter11">11.总结</span>
 ### 在网上看到一个例子非常贴切[2]：
 ### *Spring Cloud*就像一栋写字楼，写字楼里有各种各样的公司为用户提供了各种各样的服务。
 ### 每间办公室对应着一个*docker*容器，容器内跑了程序就叫一个微服务节点。每间办公室的房间号就是每一个容器的ip和port，公司名称就是微服务的服务名，如果一家公司规模较大有好几间办公室，那么就是多个容器组成一个高可用的微服务集群
@@ -487,7 +487,7 @@
 ### 如果这栋写字楼的物业公司福利够好，保洁阿姨每天上下班都有巴士接送，这就是*Spring Cloud Bus*
 
 ---
-# <span id="chapter12">12.引用说明</span>
+# <span name="chapter12">12.引用说明</span>
 ### 此文档用于个人学习总结，有少部分文字跟图片引用于一些大神们的博客，如果有漏掉的您可以给我发邮件说明，以下给出引用链接：
 - 每章节文字介绍引用自<a href="http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">《Spring Cloud基础教程》</a>
 - [1]RabbitMQ的基本概念引用自<a href="http://blog.csdn.net/yejingtao703/article/details/77688711">我为什么要选择RabbitMQ，RabbitMQ简介，各种MQ选型对比</a>
