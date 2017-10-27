@@ -450,13 +450,15 @@
 ![](https://i.imgur.com/3c2TLet.png)
 
 ---
-# <span name="chapter10">10.SideCar异构服务</span>
+# <a name="chapter10">10.SideCar异构服务</a>
 ### 10.1 SideCar介绍： 
 ### Spring Cloud Netflix Sidecar的设计灵感来自Netflix Prana，简单的说，一个非jvm程序，如：c++、python等，想要注册到eureka，但是应用都是一堆别的语言写的，那应该如何实现呢？Sidecar的原理就是监听该应用所运行的端口，然后检测该程序的运行状态，非jvm应用需要应该实现一个健康检查，Sidecar能够以此来报告给Eureka注册中心该应用是up还是down状态。
 ### 报告信息：
     {
   		"status":"UP"
 	}
+
+![](https://i.imgur.com/vbPvKpp.png)
 
 ### 10.2 SideCar简单使用：
 ### 10.2.1 添加依赖
