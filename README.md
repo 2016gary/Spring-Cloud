@@ -1,7 +1,7 @@
 # <a name="spring_cloud_top">Spring Cloud微服务架构入门教程</a>
 <img src="/SpringCloud.png"  alt="无法显示该图片" />
 
-### by Gary
+### By Gary
 
 ---
 # Index：
