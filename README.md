@@ -467,6 +467,7 @@
 ![](https://i.imgur.com/tojowtz.png)
 ### 10.2.3 添加注解
 ![](https://i.imgur.com/KeE91oJ.png)
+![](https://i.imgur.com/O5nGmns.png)
 ### Eureka Web UI：
 ![](https://i.imgur.com/NX9yusl.png)
 ### forSideCar.py：
