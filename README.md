@@ -54,7 +54,7 @@
 - 下载安装并配置tomcat
 - 构建war
 - 部署项目到tomcat
-### spring boot是一个用来简化搭建Spring应用以及简化其开发过程的框架，简化的内容整体大概为如下几块：
+### Spring Boot是一个用来简化搭建Spring应用以及简化其开发过程的框架，简化的内容整体大概为如下几块：
 - **简化依赖**：通过maven中一个spring-boot-starter-xxx就可以把需要的功能模块所有指定版本的依赖包全部引入
 - **简化容器**：通过maven中一个spring-boot-starter-web配置就可以引入一个内置的tomcat
 - **简化配置**：通过@EnableAutoConfiguration就可以让spring boot智能化自动配置相应模块（需要classPath引入对应模块的jar来配合）；通过@Configuration来减少甚至完全消除对xml的依赖
@@ -62,10 +62,12 @@
 
 ### 2.2.2 Spring Boot简单使用：
 ### 2.2.2.1 修改pom文件：
-![](https://i.imgur.com/SUIiPjX.png)
-![](https://i.imgur.com/D2V1sql.png)
-### 2.2.2.2 添加注解：
-![](https://i.imgur.com/DQlnNDI.png)
+![](https://i.imgur.com/C9BszDu.png)
+![](https://i.imgur.com/8o3lYlc.png)
+### 2.2.2.2 配置文件：
+![](https://i.imgur.com/Pwm9jBO.png)
+### 2.2.2.3 添加注解：
+![](https://i.imgur.com/IvIT7dE.png)
 ### 简化容器：
 ![](https://i.imgur.com/RkLhd13.png)
 
@@ -246,15 +248,15 @@
 ![](https://i.imgur.com/9OJd9yS.png)
 
 ---
-# <a name="chapter6">6.Sleuth & Zipin服务链式追踪</a>
+# <a name="chapter6">6.Sleuth & Zipkin服务链式追踪</a>
 ## 6.1 Sleuth
 ### 6.1.1 Sleuth介绍：
 ### 服务追踪分析：一个调用可能需要多个后台服务协同完成，随着服务的增多对调用链的分析也会越来越复杂。针对服务链路追踪的问题，Google发表了Dapper论文，介绍了他们如何进行服务追踪分析。其基本思路是在服务调用的请求和响应中加入ID，标明上下游请求的关系。利用这些信息，可以可视化地分析服务调用链路和服务间的依赖关系。
 
 ![](https://i.imgur.com/yoEA7Ph.png)
 
-## 6.2 Zipin
-### 6.2.1 Zipin介绍：
+## 6.2 Zipkin
+### 6.2.1 Zipkin介绍：
 ### 对应Dpper的开源实现是Zipkin，Spring Cloud Sleuth是对Zipkin的一个封装，对于Span、Trace等信息的生成、接入HTTP Request，以及向Zipkin Server发送采集信息等全部自动完成。
 
 ![](https://i.imgur.com/bulM0h4.png)
@@ -468,10 +470,10 @@
 ### 10.2.3 添加注解
 ![](https://i.imgur.com/KeE91oJ.png)
 ![](https://i.imgur.com/O5nGmns.png)
-### Eureka Web UI：
-![](https://i.imgur.com/NX9yusl.png)
 ### forSideCar.py：
 ![](https://i.imgur.com/PIFyLXK.png)
+### Eureka Web UI：
+![](https://i.imgur.com/NX9yusl.png)
 ### 如果关掉python程序，Eureka Web UI：
 ![](https://i.imgur.com/k9WOela.png)
 
