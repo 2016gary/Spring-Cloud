@@ -1,23 +1,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
+	<!-- 当前项目配置 -->
 	<groupId>com.gary</groupId>
 	<artifactId>ConfigClient</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
+	<!-- 打包类型：jar/war -->
 	<packaging>war</packaging>
 
-	<!-- 引入spring boot的依赖 -->
+	<!-- 引入Spring Boot依赖：提供了Maven默认配置，以及dependencyManagement -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.1.RELEASE</version>
 	</parent>
 
+	<!-- 属性配置：可以用于覆盖默认属性 -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 	</properties>
 
+	<!-- 引入依赖 -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -46,9 +52,10 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<!-- 添加spring-boot的maven插件 -->
+	<!-- 添加Spring-boot的Maven插件 -->
 	<build>
 		<plugins>
+			<!--构建fatJar的插件：fatJar并不是Java标准，是Spring自己实现的特性，因此需要引用Spring的特殊插件来实现jar包构建 -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
