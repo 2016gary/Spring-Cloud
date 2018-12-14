@@ -321,7 +321,15 @@
 ### Spring Cloud Zuul就是一个提供负载均衡、反向代理和权限认证的API Gateway
 ![](https://i.imgur.com/aNQ07wN.png)
 
-### 7.2 Zuul原理：
+### 7.2 API网关的作用：
+- 连接器和适配器
+- 接口标准化
+- 流量聚合，零售转批发
+- 客户行为数据
+- 服务品质评价与备份
+![](https://i.imgur.com/fX2BtG1.png)
+
+### 7.3 Zuul原理：
 ### Zuul通过大量的filter对请求进行安全、认证、路由进行控制
 ![](https://i.imgur.com/tn7Thhn.png)
 
@@ -330,12 +338,12 @@
 - **POST Filters**：是目标节点请求结束并返回到zuul后执行。可以把HTTP headers添加到返回给客户端的response中，并可以收集统计信息和健康信息，以及把目标节点的业务数据返回给客户
 - **ERROR Filters**：任何一个步骤出错都会调用当前类型的filter
 
-### 7.3 Zuul简单使用：
-### 7.3.1 添加依赖
+### 7.4 Zuul简单使用：
+### 7.4.1 添加依赖
 ![](https://i.imgur.com/m16aqGM.png)
-### 7.3.2 配置文件
+### 7.4.2 配置文件
 ![](https://i.imgur.com/HpKPiu4.png)
-### 7.3.3 添加注解
+### 7.4.3 添加注解
 ![](https://i.imgur.com/4RU0uyX.png)
 
 ### Zuul源码：
