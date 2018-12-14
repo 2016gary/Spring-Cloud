@@ -51,7 +51,7 @@
 # <a name="chapter2">2.Spring Cloud & Spring Boot</a>
 ## 2.1 Spring Cloud
 ### 2.1.1 Spring Cloud介绍：
-### Spring Cloud是一个基于Spring Boot实现的云应用开发工具，它为基于JVM的云应用开发中涉及的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的开发方式
+### Spring Cloud是一组基于Spring Boot封装的微服务框架，提供了完整的分布式系统解决方案。它为基于JVM的云应用开发中涉及的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的开发方式
 ### Spring Cloud Netflix项目是Spring Cloud的子项目之一，主要内容是对Netflix公司一系列开源产品的包装，它为Spring Boot应用提供了自配置的Netflix OSS整合。通过一些简单的注解，开发者就可以快速的在应用中配置一下常用模块并构建庞大的分布式系统。它主要提供的模块包括：服务发现（Eureka），断路器（Hystrix），智能路由（Zuul），客户端负载均衡（Ribbon）等
 ### 2.1.2 Spring Cloud版本命名：
 ![](https://i.imgur.com/ijzwPdf.png)
@@ -60,6 +60,23 @@
 - 每个版本修复一轮严重 bug ，就会发布一个 “service releases” 版本，用 .SRX 来表示，X 是版本号
 ### 2.1.2 Spring Cloud架构图：
 ![](https://i.imgur.com/BmBQ2tQ.png)
+
+### 2.1.3 Spring Cloud启动过程：
+### 1.实例化SpringApplication
+- 加载webEnvironment
+- 从spring.factories中加载所有可用的ApplicationContextInitializer
+- 从spring.factories中加载所有可用的ApplicationListener
+- 设置main方法的定义类
+
+### 2.执行run方法
+- 从spring.factories中加载所有可用的SpringApplicationRunListener发起事件，listener响应事件
+- Listener响应prepareEnvironment事件
+- 设置是否打印banner
+- 创建应用上下文，spring容器IOC
+- prepareContext()，initializer初始化
+- refreshContext()，启动tomcat
+- afterRefresh()，获取所有的runner并执行run方法，例如spring batch的JobLauncherCommandLineRunner
+- Listener响应context的finish事件
 
 ## 2.2 Spring Boot
 ### 2.2.1 Spring Boot介绍：
