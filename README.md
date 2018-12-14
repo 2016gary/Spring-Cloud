@@ -339,23 +339,27 @@
 ### 7.3 Zuul原理：
 ### Zuul通过大量的filter对请求进行安全、认证、路由进行控制
 ![](https://i.imgur.com/tn7Thhn.png)
-![](https://i.imgur.com/9QyAwOB.png)
 
 - **PRE Filters**：是在把请求路由到目标节点前执行。如：认证、加载目标服务节点、打印日志
 - **ROUTING Filters**：是把请求路由到目标服务的节点。到目标的请求就在这些filter中被创建，并通过Apache HttpClient或 Netflix Ribbon转发到目标节点
 - **POST Filters**：是目标节点请求结束并返回到zuul后执行。可以把HTTP headers添加到返回给客户端的response中，并可以收集统计信息和健康信息，以及把目标节点的业务数据返回给客户
 - **ERROR Filters**：任何一个步骤出错都会调用当前类型的filter
 
-### 7.4 Zuul架构：
+### 默认的核心过滤器：
+![](https://i.imgur.com/3mbvhm2.png)
 
 ### 7.4 Zuul架构：
+![](https://i.imgur.com/Ahn5oY5.png)
 
-### 7.4 Zuul简单使用：
-### 7.4.1 添加依赖
+### 7.5 Zuul的启动过程：
+![](https://i.imgur.com/5XQB5J6.png)
+
+### 7.6 Zuul简单使用：
+### 7.6.1 添加依赖
 ![](https://i.imgur.com/m16aqGM.png)
-### 7.4.2 配置文件
+### 7.6.2 配置文件
 ![](https://i.imgur.com/HpKPiu4.png)
-### 7.4.3 添加注解
+### 7.6.3 添加注解
 ![](https://i.imgur.com/4RU0uyX.png)
 
 ### Zuul源码：
