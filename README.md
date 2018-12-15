@@ -53,6 +53,8 @@
 ### 2.1.1 Spring Cloud介绍：
 ### Spring Cloud是一组基于Spring Boot封装的微服务框架，提供了完整的分布式系统解决方案。它为基于JVM的云应用开发中涉及的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的开发方式
 ### Spring Cloud Netflix项目是Spring Cloud的子项目之一，主要内容是对Netflix公司一系列开源产品的包装，它为Spring Boot应用提供了自配置的Netflix OSS整合。通过一些简单的注解，开发者就可以快速的在应用中配置一下常用模块并构建庞大的分布式系统。它主要提供的模块包括：服务发现（Eureka），断路器（Hystrix），智能路由（Zuul），客户端负载均衡（Ribbon）等
+![](https://i.imgur.com/YeW6lo5.png)
+
 ### 2.1.2 Spring Cloud版本命名：
 ![](https://i.imgur.com/ijzwPdf.png)
 
